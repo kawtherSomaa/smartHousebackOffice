@@ -1,0 +1,105 @@
+<div>
+    <h2 id="page-heading">
+        <span>Houses</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-house" [routerLink]="['/house/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new House
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="houses?.length === 0">
+        <span>No houses found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="houses && houses.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="libelleHouse"><span>Libelle House</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="userLogin"><span>User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="livingroomsId"><span>Livingrooms</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="doorsId"><span>Doors</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bathroomsId"><span>Bathrooms</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="kitchensId"><span>Kitchens</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="roomsId"><span>Rooms</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let house of houses ;trackBy: trackId">
+                    <td><a [routerLink]="['/house', house.id, 'view']">{{ house.id }}</a></td>
+                    <td>{{ house.libelleHouse }}</td>
+                    <td>
+                        {{ house.userLogin }}
+                    </td>
+                    <td>
+                        <div *ngIf="house.livingroomsId">
+                            <a [routerLink]="['/living-room', house.livingroomsId , 'view']" >{{ house.livingroomsId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="house.doorsId">
+                            <a [routerLink]="['/door', house.doorsId , 'view']" >{{ house.doorsId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="house.bathroomsId">
+                            <a [routerLink]="['/bath-room', house.bathroomsId , 'view']" >{{ house.bathroomsId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="house.kitchensId">
+                            <a [routerLink]="['/kitchen', house.kitchensId , 'view']" >{{ house.kitchensId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="house.roomsId">
+                            <a [routerLink]="['/room', house.roomsId , 'view']" >{{ house.roomsId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/house', house.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/house', house.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(house)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="houses && houses.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
