@@ -1,0 +1,72 @@
+{
+  "name": "House",
+  "fields": [
+    {
+      "fieldName": "libelleHouse",
+      "fieldType": "String",
+      "javadoc": "The firstname attribute."
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "house",
+      "relationshipName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "livingRoom",
+      "otherEntityRelationshipName": "house",
+      "relationshipName": "livingrooms",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "door",
+      "otherEntityRelationshipName": "house",
+      "relationshipName": "doors",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "bathRoom",
+      "otherEntityRelationshipName": "house",
+      "relationshipName": "bathrooms",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "kitchen",
+      "otherEntityRelationshipName": "house",
+      "relationshipName": "kitchens",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "room",
+      "otherEntityRelationshipName": "house",
+      "relationshipName": "rooms",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200804210900",
+  "javadoc": "The House entity.",
+  "entityTableName": "house",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

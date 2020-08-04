@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="house">
+            <h2><span>House</span> {{ house.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span ngbTooltip="The firstname attribute.">Libelle House</span></dt>
+                <dd>
+                    <span>{{ house.libelleHouse }}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{ house.userLogin }}
+                </dd>
+                <dt><span>Livingrooms</span></dt>
+                <dd>
+                    <div *ngIf="house.livingroomsId">
+                        <a [routerLink]="['/living-room', house.livingroomsId, 'view']">{{ house.livingroomsId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Doors</span></dt>
+                <dd>
+                    <div *ngIf="house.doorsId">
+                        <a [routerLink]="['/door', house.doorsId, 'view']">{{ house.doorsId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Bathrooms</span></dt>
+                <dd>
+                    <div *ngIf="house.bathroomsId">
+                        <a [routerLink]="['/bath-room', house.bathroomsId, 'view']">{{ house.bathroomsId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Kitchens</span></dt>
+                <dd>
+                    <div *ngIf="house.kitchensId">
+                        <a [routerLink]="['/kitchen', house.kitchensId, 'view']">{{ house.kitchensId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Rooms</span></dt>
+                <dd>
+                    <div *ngIf="house.roomsId">
+                        <a [routerLink]="['/room', house.roomsId, 'view']">{{ house.roomsId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/house', house.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

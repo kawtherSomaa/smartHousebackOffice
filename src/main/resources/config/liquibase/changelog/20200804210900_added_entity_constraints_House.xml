@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity House.
+    -->
+    <changeSet id="20200804210900-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="house"
+                                 constraintName="fk_house_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="livingrooms_id"
+                                 baseTableName="house"
+                                 constraintName="fk_house_livingrooms_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="living_room"/>
+
+        <addForeignKeyConstraint baseColumnNames="doors_id"
+                                 baseTableName="house"
+                                 constraintName="fk_house_doors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="door"/>
+
+        <addForeignKeyConstraint baseColumnNames="bathrooms_id"
+                                 baseTableName="house"
+                                 constraintName="fk_house_bathrooms_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bath_room"/>
+
+        <addForeignKeyConstraint baseColumnNames="kitchens_id"
+                                 baseTableName="house"
+                                 constraintName="fk_house_kitchens_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="kitchen"/>
+
+        <addForeignKeyConstraint baseColumnNames="rooms_id"
+                                 baseTableName="house"
+                                 constraintName="fk_house_rooms_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="room"/>
+
+    </changeSet>
+</databaseChangeLog>
